@@ -1,3 +1,6 @@
+let w = 1080;  // Canvas width
+let h = 1920;  // Canvas height
+
 const studentName = "MDH";
 const studentTitle = "GLR";
 
@@ -10,8 +13,7 @@ let lastColorChangeTime = 0;
 let currentColor = [0, 0, 0];
 
 function setup() {
-    createCanvas(cw, ch);
-    canvas = document.getElementById("defaultCanvas0");
+    createCanvas(w, h);  // Set canvas size explicitly
     background(143, 229, 8);
 
     for (let i = 0; i < 300; i++) {
@@ -63,14 +65,8 @@ function isNearWord(x, y) {
     const wordY = height / 2 - wordHeight / 2;
     const buffer = 100;
 
-    if (
-        x > wordX - buffer && x < wordX + wordWidth + buffer &&
-        y > wordY - buffer && y < wordY + wordHeight + buffer
-    ) {
-        return true;
-    }
-
-    return false;
+    return x > wordX - buffer && x < wordX + wordWidth + buffer &&
+           y > wordY - buffer && y < wordY + wordHeight + buffer;
 }
 
 function changeRectangleColor() {
@@ -79,4 +75,3 @@ function changeRectangleColor() {
         currentColor = [random(255), random(255), random(255)];
     }
 }
-
